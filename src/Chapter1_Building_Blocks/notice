@@ -1,0 +1,69 @@
+1-2-3-4. Mở đầu
+- Trong java có 3 cách comment
+- Class top-level luôn luôn đc đánh dấu là public
+- Chỉ có một class có thể đc đánh dấu là public trong một tệp.
+Nghĩa là một tệp chỉ đc có một class là public và tên class trùng với tên file
+- public static void main(String[] agrs) {}, sau đây là các biến thể của main method
++ bạn có thể thay đổi tên tham số args thành tên khác
++ hay hoặc String agrs[]
++ String... args
++ thêm final VD: public final static void main(String[] agrs) {}
++ thêm final vào tham số VD: public static void main(final String[] agrs) {}
++ có thể viết như này: static public void main(String[] agrs) {}
+
+5. Package
+- Có 3 trường hợp để import
+import java.util.Random; // import a specific class
+import java.util.*; // import all classes in the package
+import java.util.Random random = new java.util.Random(); // import a specific class and use it with its fully qualified name
+- Trường hợp đặc biệt
+import java.util.Date; //  Vì import cụ thể nên chương trình sẽ lấy Date trong java.util.Date thay vì java.sql.Date
+import java.sql.*;
+
+6. Compile, Run and Archive Java Files
+// Biên dịch và chạy chương trình thông thường
+- Lệnh compile không phân biệt hệ điều hành
++ cd đến sub package
++ javac ocppackage/Ocp.java ocapackage/Oca.java
+=> Output: .class files
+- Biên dịch tất cả các file trong package
++ javac ocppackage/*.java
+- Sau khi biên dịch thành công thì trong package có 2 file là .java và .class
+- Để chạy chương trình thì cần phải cd đến package chứa file .class
++ java ocppackage.Ocp
+
+// Biên dịch và chạy trương trình kiểu khác
+- Khi biên dịch muốn file .class sau khi biên nằm trong folder /classes khác với .java file
+và ,mỗi package sẽ có một thư mục con riêng chứa file .class thì chạy lệnh sau:
++ javac -d sub_package/Ocp.java sub_package/Oca.java
+- Sau khi biên dịch theo cách trên thì sẽ có cấu trúc như sau:
+/ classes
+  / ocppackage
+      Ocp.class
+  / ocapackage
+      Oca.class
+- Để chạy chương trình theo cách trên có 3 cách
++ java -cp classes ocppackage.Ocp
++ java -classpath classes ocppackage.Ocp
++ java --class-path classes ocppackage.Ocp
+* Lưu ý: -cp cũng có sẵn trên lệnh javac -cp để compiler khi cần thiết
+
+// Để chạy ứng dụng có một số file trên package khác VD("deps" package)
+và một số trong file .jar(VD: myJar.jar) thì chạy lệnh sau:
+java -cp ".;C:\com\udemy\deps;C:\com\udemy\myJar.jar" myPackage.MyApp (Window)
+java -cp ".:/com/udemy/deps:/com/udemy/myJar.jar" myPackage.MyApp (Unix OS)
++ Dấu . nghĩa là bao gồm cả thư mục hiện tại
+
+
+// Trong trường hợp có nhiều file .jar trong cùng thư mục thì có thể dùng lệnh sau:
+java -cp ".;C:\com\udemy\myjars\*" myPackage.MyApp (Window)
+java -cp ".:C:/com/udemy/myjars/*" myPackage.MyApp (Unix OS)
++ Dấu * không bao gồm các thư mục con, chỉ bao gồm các file .jar trong thư mục hiện tại
+
+// Tạo một file jar(froms file in current folder)
+jar -cvf myNewJarFile.jar .
+jar --create --verbose --file myNewJarFile.jar .
+
+// Tạo một file jar(from file in custom folder)
+jar -cvf myNewJarFile.jar -C myFolder
+jar --create --verbose --file myNewJarFile.jar -C myFolder
