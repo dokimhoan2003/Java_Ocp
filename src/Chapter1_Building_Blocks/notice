@@ -35,7 +35,7 @@ import java.sql.*;
 // Biên dịch và chạy trương trình kiểu khác
 - Khi biên dịch muốn file .class sau khi biên nằm trong folder /classes khác với .java file
 và ,mỗi package sẽ có một thư mục con riêng chứa file .class thì chạy lệnh sau:
-+ javac -d sub_package/Ocp.java sub_package/Oca.java
++ javac -d ocppackage/Ocp.java ocapackage/Oca.java
 - Sau khi biên dịch theo cách trên thì sẽ có cấu trúc như sau:
 / classes
   / ocppackage
@@ -67,3 +67,19 @@ jar --create --verbose --file myNewJarFile.jar .
 // Tạo một file jar(from file in custom folder)
 jar -cvf myNewJarFile.jar -C myFolder
 jar --create --verbose --file myNewJarFile.jar -C myFolder
+
+7. Objects
+- Khi khởi tạo một đối tượng thì initializer block sẽ được chạy trước constructor
+- Thứ tự chạy của các khối lệnh trong class khi tạo một đối tượng là:
+  + Khởi tạo các variable instance
+  + Thực thi khối khởi tạo(initializer block)
+  + Thực thi constructor
+
+8. Data Types
+- Primitive data types
+To keep in mind:
++ trong java boolean true hay false không liên quan đến 1 hay 0
++ Tất cả các loại số đều cho phép số âm, số dương và số 0
++ float yêu cầu đặt f hay F ở cuối số, nếu không sẽ bị lỗi biên dịch( VD: float x = 2.7; // DOES NOT COMPILE AND DEFAULTS TO DOUBLE)
++ long yêu cầu đặt l hay L ở cuối số, nếu không sẽ bị lỗi biên dịch( VD: long x = 233333333333333; // DOES NOT COMPILE AND DEFAULTS TO INT)
++ bit size của boolean không được xác định(phụ thuộc vào JVM)
