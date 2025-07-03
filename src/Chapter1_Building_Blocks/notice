@@ -83,3 +83,24 @@ To keep in mind:
 + float yêu cầu đặt f hay F ở cuối số, nếu không sẽ bị lỗi biên dịch( VD: float x = 2.7; // DOES NOT COMPILE AND DEFAULTS TO DOUBLE)
 + long yêu cầu đặt l hay L ở cuối số, nếu không sẽ bị lỗi biên dịch( VD: long x = 233333333333333; // DOES NOT COMPILE AND DEFAULTS TO INT)
 + bit size của boolean không được xác định(phụ thuộc vào JVM)
+Hỗ trợ định dạng số digital
++ Base 10: digits 0-9, số bình thường
++ Octal: digits 0-7, sử dụng 0 ở đầu số, VD: 0123
++ Hexadecimal: digits 0-9 và a-f/A-F, sử dụng 0x hoặc 0X ở đầu số, VD: 0x123, OxFF, OXFF
++ Binary: digits 0-1, sử dụng 0b hoặc 0B ở đầu số, VD: 0b101010, 0B101010
++ Underscore: có thể sử dụng dấu gạch dưới để phân tách các chữ số trong số,
+VD: 1_000_000, 0xFF_FF_FF_FF, 0b1010_1010 còn _10.1, 10.1_, 10_.1, 10._1 sẽ không hợp lệ
+//Có một số wrapper class cho các primitive data types:
+Boolean, Byte, Short, Integer, Long, Float, Double, Character và ta sử dụng method static valueOf()
+Khác nhau giữa sử dụng Integer.valueOf() và Integer.parseInt() là một cái tạo wrapper class một cái tạo int primitive
+// Wrapper class cung cấp mốt số methods hữu ích
+byteValue(), shortValue(), intValue(), longValue(), floatValue(), doubleValue(), charValue()
+VD: Double d = Double.valueOf(314.67);
+system.out.println(d.intByte()); // 58 (wrap: 314-256 = 58)
+system.out.println(d.intValue()); // 314
+
+//Strings
++ String không phải là primitive data type
+
+9. Text Blocks
+- Khi bắt đầu """ mở đầu thì theo sau đó sẽ là một dòng mới
