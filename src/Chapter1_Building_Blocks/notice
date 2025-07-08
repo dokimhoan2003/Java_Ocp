@@ -104,3 +104,49 @@ system.out.println(d.intValue()); // 314
 
 9. Text Blocks
 - Khi bắt đầu """ mở đầu thì theo sau đó sẽ là một dòng mới
+
+10. Variables
+ _ có 3 loại variables
+ + local variables
+ + instance variables
+  + class variables
+* Khi sử dụng local variables thì phải khởi tạo trước khi sử dụng, nếu không sẽ bị lỗi biên dịch
+còn instance variables và class variables gán giá trị mặc định nếu không được khởi tạo
+// final variable(còn gọi là constant)
+* final có thể áp dụng cho reference type
+final int[] MY_NUMBERS = new int[5];
+* reference không thể sửa đổi, nhưng giá trị của mảng có thể thay đổi
+MY_NUMBERS[2] = 10; // hợp lệ
+MY_NUMBERS = null; // không hợp lệ
+- Variable scope
++ local variables: chỉ có thể truy cập trong phương thức, khối lệnh hoặc constructor nơi nó được khai báo
++ Method parameters: chỉ có thể truy cập trong phương thức nơi nó được khai báo
++ Instane variables: trong phạm vi từ khi được định nghĩa tới khi object được thu hồi bởi Grabage Collector
++ Class variables: trong phạm vi từ khi được định nghĩa tới khi chương trình kết thúc
+11. Local Variable Type Inference
+- Local variable type inference là một tính năng mới trong Java 10, cho phép bạn khai báo biến mà không cần chỉ định kiểu dữ liệu
+- Sử dụng từ khóa var để khai báo biến, ví dụ: var x = 10; // x sẽ được compiler suy luận là kiểu int
+* bạn không thể gán giá trị null cho biến var, vì compiler không thể suy luận kiểu dữ liệu
+VD: var x = null; // Does not compile
+* var không phải là reserve keyword( từ khoá dự trữ) trong Java
+public class Var {} // OK
+var var = 10; // OK
+Var var = new Var(); // OK, nhưng bad practice
+* Các local variable mới sử dụng được tính năng suy luận kiểu dữ liệu
+public int sum(var a, var b) {
+    int result = a + b;
+    return result;
+} // điều này không hoạt động vì a và b là các method parameters không phải là local variable
+* Trường hợp sử dụng trong thực tế
+//old way
+SomeClassWithVeryLongName myInstance = new SomeClassWithVeryLongName();
+//new way
+var myInstance = new SomeClassWithVeryLongName();
+12. Garbage Collector
+- Sử dụng Garbage Collector để giải phóng bộ nhớ trên heap
+- Bạn có thể gợi ý java dọn nhưng ko có quyền ép buộc bằng lệnh sau:
+System.gc(); // gợi ý cho Garbage Collector dọn rác
+* Eligibility for Garbage Collection ( Đủ điều kiện để Garbage Collector dọn rác)
++ Object được coi là eligible khi chương trình không còn có thể tiếp cận(reachable) nó nữa
+1. Object không còn được tham chiếu bởi bất kỳ biến nào
+2. Tất cả reference của object đã ra bên ngoài phạm vi (scope)
