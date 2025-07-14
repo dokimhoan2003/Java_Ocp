@@ -150,3 +150,23 @@ System.gc(); // gợi ý cho Garbage Collector dọn rác
 + Object được coi là eligible khi chương trình không còn có thể tiếp cận(reachable) nó nữa
 1. Object không còn được tham chiếu bởi bất kỳ biến nào
 2. Tất cả reference của object đã ra bên ngoài phạm vi (scope)
+
+// Review Questions
+1. ADE
+2. C
+3. AE
+4. AB
+5. ABCDF
+6. E
+7. ABCE
+8. BDEFG
+9. ABC
+10. ABDEF
+11. C
+12. AC
+13. ///
+14. ABDE
+15. CF
+16. BDF
+17. ADG
+18. ABDF
